@@ -226,7 +226,7 @@ class LanguageServer extends AdvancedJsonRpc\Dispatcher
 
                 // Find composer.json
                 if ($this->composerJson === null) {
-                    $composerJsonFiles = yield $this->filesFinder->find(Path::makeAbsolute('**/composer.json', $rootPath));
+                    $composerJsonFiles = yield $this->filesFinder->find(Path::makeAbsolute('**/composer.json', $rootPath), []);
                     sortUrisLevelOrder($composerJsonFiles);
 
                     if (!empty($composerJsonFiles)) {
@@ -236,7 +236,7 @@ class LanguageServer extends AdvancedJsonRpc\Dispatcher
 
                 // Find composer.lock
                 if ($this->composerLock === null) {
-                    $composerLockFiles = yield $this->filesFinder->find(Path::makeAbsolute('**/composer.lock', $rootPath));
+                    $composerLockFiles = yield $this->filesFinder->find(Path::makeAbsolute('**/composer.lock', $rootPath), []);
                     sortUrisLevelOrder($composerLockFiles);
 
                     if (!empty($composerLockFiles)) {
